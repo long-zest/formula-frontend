@@ -4,8 +4,10 @@
     padding-top: 15px;
     padding-bottom: 15px;
     font-weight: bold;
+    transition: all 0.2s ease 0s;
+    top: 1px;
 
-    a{
+    a {
         color: black;
     }
 }
@@ -14,16 +16,20 @@
     background-color: #ae4c689e;
 }
 
-.dataField:hover{ 
+.dataField:hover {
     cursor: pointer;
-    background-color: orange;
+    background-color: rgba(255, 166, 0, 0.588);
+    position: relative;
+    top: -5px;
+    transition: all 0.3s ease 0s;
+    box-shadow: 5px 5px #333333;
 }
 
 .showDriversTitle {
     padding: 5px;
     color: orange;
     width: 40%;
-    font-size: 35px;
+    font-size: 30px;
     border-bottom: 5px solid orange;
     background-color: black;
 
@@ -32,10 +38,127 @@
     }
 }
 
+.labelData {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: orange;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.labelDataItem {
+    span {
+        display: none;
+        color: #333333;
+        width: 100px;
+    }
+
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    width: 300px;
+    justify-content: center;
+}
+
+.roundNumber {
+    max-width: 10px;
+    justify-content: flex-start;
+}
+
+.pointColumn {
+    width: 50px;
+}
+
+.racerNumberColumn {
+    width: 300px;
+    margin-left: 50px;
+}
+
+.carColumn {
+    width: 200px;
+}
+
+.nationNumberColumn {
+    width: 100px;
+}
+
+.dataFlexContainer {
+    display: flex;
+    width: 100% !important;
+    align-items: center;
+}
+
+.flexContainer {
+    margin-left: 10px;
+    width: 100% !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 @media only screen and (max-width: 600px) {
     .showDriversTitle {
         font-size: 25px;
         width: 100%;
+    }
+
+    .showResultTitle {
+        font-size: 20px;
+        width: 100%;
+    }
+
+    .labelDataItem {
+        font-weight: bold;
+        width: 50px;
+    }
+
+    .roundNumber {
+        max-width: 50px;
+    }
+
+    .racerNumberColumn{
+        margin-left: 0px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .showResultTitle {
+        font-size: 20px;
+        width: 97%;
+    }
+
+    .labelData{
+        display: none;
+    }
+
+    .dataFlexContainer{
+        flex-direction: column;
+    }
+
+    .flexContainer{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: start;
+        margin-left: 0px;
+    }
+
+    .labelDataItem {
+        justify-content: flex-start;
+        width: 100%;
+        margin-bottom: 5px;
+        span{
+            display: inline;
+        }
+    }
+
+    .roundNumber {
+        max-width: none;
+    }
+
+    .racerNumberColumn{
+        margin-left: 0px;
     }
 }

@@ -1,18 +1,35 @@
-.showResult{
-    .showResultTitle{
+.showResult {
+    .showResultTitle {
         padding: 5px;
         color: orange;
         width: 40%;
-        font-size: 35px;
+        font-size: 30px;
         border-bottom: 5px solid orange;
         background-color: black;
 
-        .specificText{
+        .specificText {
             color: white;
         }
     }
 
-    .labelDataItem{
+    .labelData {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background: orange;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .labelDataItem {
+        span{
+            display: none;
+            color: #333333;
+            width: 100px;
+        }
+
         font-weight: bold;
         display: flex;
         align-items: center;
@@ -20,28 +37,44 @@
         justify-content: center;
     }
 
-    .roundNumber{
+    .roundNumber {
         max-width: 10px;
         justify-content: flex-start;
     }
 
-    .dateThing{
+    .dateColumn {
         width: 60px;
     }
 
-    .lapsThing{
+    .lapsColumn {
         width: 50px;
     }
 
-    .labelData{
+    .pointColumn{
+        width: 50px;
+    }
+
+    .racerNumberColumn{
+        width: 100px;
+        margin-left: 50px;
+    }
+
+    .carColumn{
+        width: 200px;
+    }
+
+    .dataFlexContainer {
+        display: flex;
+        width: 100% !important;
+        align-items: center;
+    }
+
+    .flexContainer {
+        margin-left: 10px;
+        width: 100% !important;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 100%!important;
-        background: orange;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        margin-top: 10px;
     }
 
     .dataField {
@@ -50,43 +83,101 @@
         padding-top: 15px;
         padding-bottom: 15px;
         font-weight: bold;
+        transition: all 0.2s ease 0s;
+        top: 1px;
     }
-    .flexthing0{
-        display: flex;
-        width: 100%!important;
-        align-items: center;
+
+    .firstPlaceDataField {
+        background-color: rgb(253, 253, 72)!important;
+        position: relative;
+        top: -1px;
+        box-shadow: 5px 5px #565656;
     }
-    .flexthing{
-        margin-left: 10px;
-        width: 100%!important;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }    
-    
-    .dataField:Nth-child(odd){
+
+    .secondPlaceDataField{
+        background-color: silver!important;
+        position: relative;
+        top: -0.5px;
+        box-shadow: 5px 5px #565656;
+    }
+
+    .thirdPlaceDataField{
+        background-color: #CD7F32!important;
+        position: relative;
+        top: -0.2px;
+        box-shadow: 2px 2px #565656;
+    }
+
+    .dataField:Nth-child(odd) {
         background-color: #ae4c689e;
     }
 
-    .dataField:hover{ 
+    .dataField:hover {
         cursor: pointer;
-        background-color: orange;
+        background-color: rgba(255, 166, 0, 0.588);
+        position: relative;
+        top: -5px;
+        transition: all 0.3s ease 0s;
+        box-shadow: 5px 5px #333333;
     }
+
 
     @media only screen and (max-width: 600px) {
         .showResultTitle {
             font-size: 20px;
-            width: 100%;
+            width: 97%;
         }
 
-        .labelDataItem{
+        .labelDataItem {
             font-weight: bold;
             width: 50px;
         }
 
-        .roundNumber{
-            
+        .roundNumber {
             max-width: 50px;
+        }
+
+        .racerNumberColumn{
+            margin-left: 0px;
+        }
+    }
+
+    @media only screen and (max-width: 400px) {
+        .showResultTitle {
+            font-size: 20px;
+            width: 97%;
+        }
+
+        .labelData{
+            display: none;
+        }
+
+        .dataFlexContainer{
+            flex-direction: column;
+        }
+
+        .flexContainer{
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: start;
+            margin-left: 0px;
+        }
+
+        .labelDataItem {
+            justify-content: flex-start;
+            width: 100%;
+            margin-bottom: 5px;
+            span{
+                display: inline;
+            }
+        }
+
+        .roundNumber {
+            max-width: none;
+        }
+
+        .racerNumberColumn{
+            margin-left: 0px;
         }
     }
 }
