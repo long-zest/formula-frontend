@@ -1,0 +1,28 @@
+.Nav{
+    color: white;
+    height: 5vh;
+    background-color: black;
+    align-items: center;
+    display: flex;
+
+    a{
+        color: white;
+    }
+
+    .Nav-item{
+        background-color: orange;
+        height: auto;
+        cursor: pointer;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+    }
+
+    .Nav-item:hover{
+        background-color: darkorange;
+        border: 1px solid white;
+    }
+}
+

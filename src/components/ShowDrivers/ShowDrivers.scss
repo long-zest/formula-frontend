@@ -1,0 +1,41 @@
+.dataField {
+    color: black;
+    padding: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: bold;
+
+    a{
+        color: black;
+    }
+}
+
+.dataField:Nth-child(odd) {
+    background-color: #ae4c689e;
+}
+
+.dataField:hover{ 
+    cursor: pointer;
+    background-color: orange;
+}
+
+.showDriversTitle {
+    padding: 5px;
+    color: orange;
+    width: 40%;
+    font-size: 35px;
+    border-bottom: 5px solid orange;
+    background-color: black;
+
+    .specificText {
+        color: white;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .showDriversTitle {
+        font-size: 25px;
+        width: 100%;
+    }
+}

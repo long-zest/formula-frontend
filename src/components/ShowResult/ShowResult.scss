@@ -1,0 +1,92 @@
+.showResult{
+    .showResultTitle{
+        padding: 5px;
+        color: orange;
+        width: 40%;
+        font-size: 35px;
+        border-bottom: 5px solid orange;
+        background-color: black;
+
+        .specificText{
+            color: white;
+        }
+    }
+
+    .labelDataItem{
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        width: 300px;
+        justify-content: center;
+    }
+
+    .roundNumber{
+        max-width: 10px;
+        justify-content: flex-start;
+    }
+
+    .dateThing{
+        width: 60px;
+    }
+
+    .lapsThing{
+        width: 50px;
+    }
+
+    .labelData{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%!important;
+        background: orange;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .dataField {
+        color: black;
+        padding: 10px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-weight: bold;
+    }
+    .flexthing0{
+        display: flex;
+        width: 100%!important;
+        align-items: center;
+    }
+    .flexthing{
+        margin-left: 10px;
+        width: 100%!important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }    
+    
+    .dataField:Nth-child(odd){
+        background-color: #ae4c689e;
+    }
+
+    .dataField:hover{ 
+        cursor: pointer;
+        background-color: orange;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .showResultTitle {
+            font-size: 20px;
+            width: 100%;
+        }
+
+        .labelDataItem{
+            font-weight: bold;
+            width: 50px;
+        }
+
+        .roundNumber{
+            
+            max-width: 50px;
+        }
+    }
+}
