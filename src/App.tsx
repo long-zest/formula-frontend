@@ -20,11 +20,9 @@ const initialStateData: initialState = {
 
 function App() {
   const [data, setData] = useState([])
-  const [searchInfo, setSearchInfo] = useState(initialStateData)
   const [loading, setLoading] = useState(false)
   const location = useLocation();
   const [searchType, setSearchType] = useState(location.pathname.slice(1))
-  console.log(location.pathname.slice(1))
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,12 +31,12 @@ function App() {
         if (location.pathname.slice(1) === "drivers") {
           setLoading(true)
           setData([])
-          const response = await formulaApi.getDriversWithYear(searchInfo)
+          const response = await formulaApi.getDriversWithYear(initialStateData)
           setData(response.data.MRData.StandingsTable)
         } else {
           setLoading(true)
           setData([])
-          const response = await formulaApi.getResult(searchInfo)
+          const response = await formulaApi.getResult(initialStateData)
           setData(response.data.MRData.RaceTable)
         }
         
@@ -51,10 +49,6 @@ function App() {
 
     fetchData();
   }, [location.pathname]);
-
-  // useEffect(() => {
-  //   setData([])
-  // }, [location.pathname])
 
   const getData = async (initialStateData: initialState) => {
     setLoading(true)
@@ -87,21 +81,20 @@ function App() {
     switch (type) {
       case "results":
         setSearchType("results")
-        getData(searchInfo)
+        getData(initialStateData)
         break
       case "drivers":
         setSearchType("drivers")
-        getDrivers(searchInfo)
+        getDrivers(initialStateData)
         break
       case "rounds":
         setSearchType("rounds")
-        getData(searchInfo)
+        getData(initialStateData)
         break
       default:
         break
     }
   }
-   console.log(data)
 
   return (
     <div className="App">
@@ -123,7 +116,7 @@ function App() {
 
       <Routes>
         <Route path='/' element={
-            data.length !== 0 && searchType === 'results'
+            data.length !== 0
             ? 
             <Spin tip="Loading..." spinning={loading}>
               <DropdownBox getData={getData} getDrivers={getDrivers} races={data} searchType={searchType} />
