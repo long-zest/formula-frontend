@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom'
+import * as constIndex from "../../../constants/constIndexData"
+
+const indexData: any = constIndex.INDEX_DATA
 
 const ShowPerRound = ({ data }: any) => {
-    const indexData: any = {
-        "0": "firstPlaceDataField",
-        "1": "secondPlaceDataField",
-        "2": "thirdPlaceDataField"
-    }
 
     return (
         <>

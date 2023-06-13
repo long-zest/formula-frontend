@@ -1,9 +1,12 @@
 import "./ShowDrivers.scss"
 import { Link } from 'react-router-dom'
+import * as constIndex from "../../constants/constIndexData"
+
+const indexData: any = constIndex.INDEX_DATA
 
 const ShowDrivers = ({ data }: any) => {
     return (
-        <div>
+        <div className="showDrivers">
             <div className='showDriversTitle'>
                 All Drivers {data?.round ? <> on Round <span className='specificText'>{data?.round}</span> </> : null} in <span className='specificText'>{data.season}</span> Season:
             </div>
@@ -23,8 +26,8 @@ const ShowDrivers = ({ data }: any) => {
                             </div>
                         </div>
 
-                        {data?.StandingsLists[0].DriverStandings?.map((driver: any) => (
-                            <div className='dataField' key={driver?.Driver.driverId}>
+                        {data?.StandingsLists[0].DriverStandings?.map((driver: any, index: any) => (
+                            <div className={`dataField ${indexData[index]}`} key={driver?.Driver.driverId}>
                                 <Link to={`/driver/${driver?.Driver.driverId}`}>
                                     <div className='dataFlexContainer'>
                                         <div className='labelDataItem roundNumber'><span>Racer Position:&nbsp;</span>{driver?.positionText}</div>

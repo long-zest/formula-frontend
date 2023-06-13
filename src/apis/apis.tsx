@@ -6,6 +6,7 @@ const RACE_RESULT_LIMIT = 1000
 const SEASONS_LIMIT = 100
 const SEASONS_OFFSET = 60
 const DRIVERS_WITH_YEAR_LIMIT = 50
+const URL_WIKI = "https://en.wikipedia.org/w/api.php?origin=*&format=json&action=query&prop=pageimages&format=json&piprop=original&titles="
 
 const formulaApi = {
     getResult(initialState: initialState) {
@@ -40,6 +41,10 @@ const formulaApi = {
     },
     getDriverResultPreviousYear(driverId: string){
         const url = `${URL}/drivers/${driverId}/driverStandings.json`
+        return axios.get(url)
+    },
+    getImgFromWiki(urlData: string){
+        const url = `${URL_WIKI}${urlData}`
         return axios.get(url)
     }
 }

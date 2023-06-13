@@ -9,6 +9,7 @@ import { Space, Spin } from 'antd';
 import ShowDrivers from './components/ShowDrivers/ShowDrivers';
 import { Routes, Route, Link, useLocation } from "react-router-dom"
 import DriverDetail from './components/DriverDetail/DriverDetail';
+import * as typeConstant from "./constants/constDataType" 
 
 const YEAR = publicConstant.SEASON
 const ROUND = publicConstant.ROUND
@@ -28,7 +29,7 @@ function App() {
     const fetchData = async () => {
       setLoading(true)
       try {
-        if (location.pathname.slice(1) === "drivers") {
+        if (location.pathname.slice(1) === typeConstant.TYPE_DRIVERS) {
           setLoading(true)
           setData([])
           const response = await formulaApi.getDriversWithYear(initialStateData)
@@ -79,16 +80,16 @@ function App() {
   const handleSearchTypeChange = (type: string) => {
     setData([])
     switch (type) {
-      case "results":
-        setSearchType("results")
+      case typeConstant.TYPE_RESULTS:
+        setSearchType(typeConstant.TYPE_RESULTS)
         getData(initialStateData)
         break
-      case "drivers":
-        setSearchType("drivers")
+      case typeConstant.TYPE_DRIVERS:
+        setSearchType(typeConstant.TYPE_DRIVERS)
         getDrivers(initialStateData)
         break
-      case "rounds":
-        setSearchType("rounds")
+      case typeConstant.TYPE_ROUND:
+        setSearchType(typeConstant.TYPE_ROUND)
         getData(initialStateData)
         break
       default:
@@ -100,13 +101,13 @@ function App() {
     <div className="App">
       <div className='Nav'>
         <Space>
-          <Link to="/results" onClick={() => handleSearchTypeChange("results")} className='Nav-item'>
+          <Link to="/results" onClick={() => handleSearchTypeChange(typeConstant.TYPE_RESULTS)} className='Nav-item'>
             RESULTS
           </Link>
-          <Link to="/drivers" onClick={() => handleSearchTypeChange("drivers")} className='Nav-item'>
+          <Link to="/drivers" onClick={() => handleSearchTypeChange(typeConstant.TYPE_DRIVERS)} className='Nav-item'>
             DRIVERS
           </Link>
-          <Link to="/rounds" onClick={() => handleSearchTypeChange("rounds")} className='Nav-item'>
+          <Link to="/rounds" onClick={() => handleSearchTypeChange(typeConstant.TYPE_ROUND)} className='Nav-item'>
             ROUNDS
           </Link>
         </Space>
@@ -130,7 +131,7 @@ function App() {
           }
         />
         <Route path='/results' element={
-            data.length !== 0 && searchType === 'results'
+            data.length !== 0 && searchType === typeConstant.TYPE_RESULTS
             ? 
             <Spin tip="Loading..." spinning={loading}>
               <DropdownBox getData={getData} getDrivers={getDrivers} races={data} searchType={searchType} />
@@ -144,7 +145,7 @@ function App() {
           }
         />
         <Route path='/drivers' element={
-            data.length !== 0 && searchType === 'drivers'
+            data.length !== 0 && searchType === typeConstant.TYPE_DRIVERS
             ? 
             <Spin tip="Loading..." spinning={loading}>
               <DropdownBox getData={getData} getDrivers={getDrivers} races={data} searchType={searchType} />
@@ -158,7 +159,7 @@ function App() {
           }
         />
         <Route path='/rounds' element={
-            data.length !== 0 && searchType === 'rounds'
+            data.length !== 0 && searchType === typeConstant.TYPE_ROUND
             ? 
             <Spin tip="Loading..." spinning={loading}>
               <DropdownBox getData={getData} getDrivers={getDrivers} races={data} searchType={searchType} />
