@@ -85,6 +85,10 @@
         font-weight: bold;
         transition: all 0.2s ease 0s;
         top: 1px;
+
+        a{
+            color: black;
+        }
     }
 
     .firstPlaceDataField {
@@ -116,7 +120,7 @@
         cursor: pointer;
         background-color: rgba(255, 166, 0, 0.588);
         position: relative;
-        top: -5px;
+        top: -3px;
         transition: all 0.3s ease 0s;
         box-shadow: 5px 5px #333333;
     }

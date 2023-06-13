@@ -5,6 +5,7 @@ import { Button, Dropdown, Input, Space } from 'antd';
 import "./DropdownBox.scss"
 import formulaApi from '../../apis/apis';
 import * as publicConstant from "../../constants/public"
+import * as typeConstant from "../../constants/constDataType"
 
 interface Props {
     getData: any,
@@ -41,14 +42,16 @@ const DropdownBox = (props: Props) => {
     };
 
     const handleRoundInputChange = (value: string) => {
+        if(parseInt(value) <= 0) {
+            alert("Plz type Round number more than 0.")
+            return
+        }
         const selectedData = value === '' ? publicConstant.ROUND : value;
 
         changeData(selectedData, "round");
     };
 
     const changeData = (selectedData: string, type: string) => {
-        console.log('Selected data:', selectedData);
-
         switch (type) {
             case "season":
                 setDataChoosed({ ...dataChoosed, season: selectedData })
@@ -69,13 +72,13 @@ const DropdownBox = (props: Props) => {
 
     const handleSearch = () => {
         switch (props.searchType) {
-            case "results":
+            case typeConstant.TYPE_RESULTS:
                 props.getData(dataChoosed)
                 break
-            case "rounds":
+            case typeConstant.TYPE_ROUND:
                 props.getData(dataChoosed)
                 break
-            case "drivers":
+            case typeConstant.TYPE_DRIVERS:
                 props.getDrivers(dataChoosed)
                 break
             default:
@@ -88,7 +91,7 @@ const DropdownBox = (props: Props) => {
             <Space direction='vertical'>
                 <Space direction='vertical'>
                     <div>
-                        {props.searchType === "results" ? "RESULTS:" : props.searchType === "drivers" ? "DRIVERS:" : "ROUNDS:"}
+                        {props.searchType === typeConstant.TYPE_RESULTS ? "RESULTS:" : props.searchType === typeConstant.TYPE_DRIVERS ? "DRIVERS:" : "ROUNDS:"}
                     </div>
                     <Space className='res'>
                         <Space className='res2'>
@@ -106,7 +109,7 @@ const DropdownBox = (props: Props) => {
                         </Space>
 
                         {
-                            props.searchType === "rounds" ? null :
+                            props.searchType === typeConstant.TYPE_ROUND ? null :
                             <Space>
                                 <div>Round:</div>
                                 <Input min={1} placeholder='Number only' type='number' onChange={(e) => handleRoundInputChange(e.target.value)} value={dataChoosed.round === "all" ? '' : dataChoosed.round} />
