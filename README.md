@@ -1,7 +1,7 @@
 ## Install and Initialization
 
 ** Note that this project is using npm so if you use yarn and get error than change into npm to run this project
-+ Clone project in your folder
++ Clone `main` branch project in your folder
 + Using `npm install` to install all package the project need (If npm install get version error using add `--legacy-peer-deps` flag after npm install) 
 
 ## Run project
