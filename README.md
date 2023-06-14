@@ -1,46 +1,36 @@
-# Getting Started with Create React App
+## Install and Initialization
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+** Note that this project is using npm so if you use yarn and get error than change into npm to run this project
++ Clone project in your folder
++ Using `npm install` to install all package the project need (If npm install get version error using add `--legacy-peer-deps` flag after npm install) 
 
-## Available Scripts
+## Run project
 
-In the project directory, you can run:
++ Use `npm start` to run the project.
++ This project using default port of react (port: 3000) so open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `npm start`
+## Some info and Feature in project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Info
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
++ This project get data from api so depend on how many data api will response and the speed of network will affect with project first loading speed.
++ Year = Season
++ Races = Round 
 
-### `npm test`
+### Feature
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+In this project we have 4 pages in total.
++ Results:
+  + User can search for all-round happened each year and then choose what round result that user wants to see.
+  + They can search directly results of the specific round that happens in a specific year with the round number appearing on all lists or get from the "Rounds" page.
+  + After the user chooses the round they want, the list of results will appear with all information, also user can click on a specific user to see all the detail of the user.
++ Drivers:
+  + User can search for all drivers that participated in a specific year.
+  + Search directly all drivers of the specific round that happen on a specific year with a round number appearing on all list or get from the "Rounds" page.
+  + User also can click on a specific user to see all the detail of the user.
++ Rounds:
+  + List all round on each year.
+  + Users can choose what year they want to list.
+  + They can click on a specific round to see the result of that round or use that round number for "Results" or "Drivers".
++ DriverDetail:
+  + See all the info on specific drivers, what season did racer participate and how many points they get, and points for each round of the current season.
