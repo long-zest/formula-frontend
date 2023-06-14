@@ -83,11 +83,11 @@ const DriverDetail = () => {
     };
 
     const pieData = {
-        labels: driverPreviousResultData.map((driver) => driver.season),
+        labels: driverPreviousResultData.slice(0, 5).map((driver) => driver.season),
         datasets: [
             {
                 label: 'Season Point',
-                data: driverPreviousResultData.map((driver) => driver.DriverStandings[0].points),
+                data: driverPreviousResultData.slice(0, 5).map((driver) => driver.DriverStandings[0].points),
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
@@ -121,8 +121,9 @@ const DriverDetail = () => {
     const handleGetDriverPreviousResultData = async () => {
         try {
             const driverPreviousResultRes = await formulaApi.getDriverResultPreviousYear(id)
-            handleGetImg([...driverPreviousResultRes.data.MRData.StandingsTable.StandingsLists]?.reverse()[0].DriverStandings[0].Driver.url)
-            setDriverPreviousResultData([...driverPreviousResultRes.data.MRData.StandingsTable.StandingsLists]?.reverse().slice(0, 5))
+            console.log(driverPreviousResultRes)
+            handleGetImg([...driverPreviousResultRes.data.MRData.StandingsTable.StandingsLists]?.reverse()[0]?.DriverStandings[0].Driver.url)
+            setDriverPreviousResultData([...driverPreviousResultRes.data.MRData.StandingsTable.StandingsLists]?.reverse())
         } catch (error) {
             console.log('Error fetching data:', error);
         } finally {
@@ -131,9 +132,9 @@ const DriverDetail = () => {
     }
 
     const handleGetImg = async (url: string) => {
-        const res = await formulaApi.getImgFromWiki(url.substring(url.lastIndexOf('/') + 1))
+        const res = await formulaApi.getImgFromWiki(url?.substring(url.lastIndexOf('/') + 1))
         const objectData: Object = res.data.query.pages
-        const imgLink: string = Object.values(objectData)[0].original.source
+        const imgLink: string = Object.values(objectData)[0].original?.source
 
         setImgData(imgLink)
     }
@@ -189,7 +190,7 @@ const DriverDetail = () => {
 
                             <div className='topRightArea'>
                                 <div className='textAreaTitle'>
-                                    Several Season point Result
+                                    Season Racer participated
                                 </div>
                                 {driverPreviousResultData.map((driver, index) => (
                                     <div className='topRightAreaText' key={driver.season}><span className={`${indexData[index]}`}>{driver.season}</span>: <span className='topRightAreaTextPoint'>{driver.DriverStandings[0].points} point</span></div>
